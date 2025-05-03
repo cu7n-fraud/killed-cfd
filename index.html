@@ -198,7 +198,7 @@
                 --SOCIALS--
             </div>
             <div class="gif-container">
-                <a href="https://discord.gg/5SABUgq7pC" target="_blank">
+                <a href="https://discord.gg/cmj5ZrvYWw" target="_blank">
                     <img src="g.gif" alt="Gi" class="github-gif" />
                 </a>
             </div>
@@ -212,7 +212,7 @@
                 --SOCIALS--
             </div>
             <div class="gif-container">
-                <a href="https://discord.gg/5SABUgq7pC" target="_blank">
+                <a href="https://discord.gg/cmj5ZrvYWw" target="_blank">
                     <img src="g1.gif" alt="Gi" class="github-gif" />
                 </a>
             </div>
@@ -231,6 +231,9 @@
     </audio>
 
     <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
         const titles = ["Kc", "<3", "nxmb"];
         let currentTitleIndex = 0;
 
@@ -254,7 +257,7 @@
         };
 
         nextBtn.onclick = function (e) {
-            e.stopPropagation(); 
+            e.stopPropagation();
             songIndex = (songIndex + 1) % songs.length;
             audioSource.src = songs[songIndex];
             music.load();
@@ -267,25 +270,21 @@
                 number: { value: 80, density: { enable: true, area: 800 } },
                 color: { value: "#ffffff" },
                 shape: { type: "circle" },
-                opacity: { value: 0.4, random: false },
+                opacity: { value: 0.4 },
                 size: { value: 3, random: true },
                 move: {
                     enable: true,
-                    speed: 4,
-                    direction: "none",
-                    random: false,
-                    straight: false,
+                    speed: 8, // Increased speed
                     outMode: "bounce"
                 }
             },
             interactivity: {
                 events: {
-                    onHover: { enable: true, mode: "grab" },
+                    onHover: { enable: false }, // Disabled hover lines
                     onClick: { enable: true, mode: "push" },
                     resize: true
                 },
                 modes: {
-                    grab: { distance: 100, lineLinked: { opacity: 0.7 } },
                     push: { quantity: 4 }
                 }
             },
